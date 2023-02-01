@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">VideoModifyingApp</string>
+    <string name="play_regular_video">Play regular video</string>
+    <string name="play_reversed_video">Play reversed video</string>
+    <string name="retry_permissions">Retry permissions</string>
+</resources>
