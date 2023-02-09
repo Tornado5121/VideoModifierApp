@@ -1,10 +1,12 @@
 package com.example.videomodifyingapp.utils.video_editor
 
-import android.net.Uri
+import kotlinx.coroutines.flow.StateFlow
 import java.io.File
 
 interface VideoEditor {
 
+    val isMergingFinished: StateFlow<Int>
+    val isTrimeringFinished: StateFlow<Int>
     suspend fun mergeVideosReversely(
         partOneVideo: File,
         partTwoVideo: File,
@@ -12,7 +14,7 @@ interface VideoEditor {
     )
 
     suspend fun trimVideo(
-        inputFile: Uri,
+        inputFile: String,
         outputFilePath: File,
         timeFrom: String,
         timeTo: String

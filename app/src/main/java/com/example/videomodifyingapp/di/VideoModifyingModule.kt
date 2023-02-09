@@ -19,5 +19,5 @@ val dataModule = module {
 
 val viewModelModule = module {
     viewModel { VideoListViewModel(get()) }
-    viewModel { VideoViewerViewModel(get()) }
+    viewModel { VideoViewerViewModel(get(), get()) }
 }

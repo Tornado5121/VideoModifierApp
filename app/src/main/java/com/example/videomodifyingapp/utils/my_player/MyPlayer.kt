@@ -2,20 +2,14 @@ package com.example.videomodifyingapp.utils.my_player
 
 import android.content.Context
 import android.net.Uri
-import com.google.android.exoplayer2.DefaultLoadControl
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 
 class MyPlayer(
-    private val context: Context
+    context: Context
 ) {
 
     private var _myPlayer: ExoPlayer? = ExoPlayer.Builder(context)
-        .setLoadControl(
-            DefaultLoadControl.Builder()
-                .setBufferDurationsMs(5000, 10000, 1000, 1000)
-                .build()
-        )
         .build()
 
     private val myPlayer: ExoPlayer
@@ -25,11 +19,16 @@ class MyPlayer(
         return myPlayer
     }
 
-    fun playVideoByUri(videoUri: Uri) {
+    fun setVideoSource(videoUri: Uri) {
+        myPlayer.stop()
+        myPlayer.removeMediaItem(0)
         val videoItem = MediaItem.fromUri(videoUri)
         myPlayer.addMediaItem(videoItem)
+    }
+
+    fun play() {
         myPlayer.prepare()
-        myPlayer.playWhenReady = true
+        myPlayer.play()
     }
 
     fun clearResources() {
